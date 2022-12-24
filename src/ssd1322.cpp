@@ -1,7 +1,6 @@
 #include <stddef.h>
 #include "SPI.h"
 #include "ssd1322.h"
-#include "Arduino.h"
 
 
 #define DISPLAY_SPI_RESET PC_13
@@ -309,7 +308,7 @@ void ssd1322_write_data(uint8_t data)
     CHIP_SELECT_LOW();
 
 	SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE3));
-    SPI.transmit(command);
+    SPI.transfer(data);
 	SPI.endTransaction();
 
     CHIP_SELECT_HIGH();
@@ -322,7 +321,7 @@ void ssd1322_write_data_buffer(uint8_t * fb, uint32_t buffer_size)
     CHIP_SELECT_LOW();
 
 	SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE3));
-    SPI.transmit(fb, BUFFER_SIZE);
+    SPI.transfer(fb, BUFFER_SIZE);
 	SPI.endTransaction();
 
     DATA_COMMAND_HIGH();
@@ -335,7 +334,7 @@ void ssd1322_write_command(uint8_t command)
     CHIP_SELECT_LOW();
 
 	SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE3));
-    SPI.transmit(command);
+    SPI.transfer(command);
 	SPI.endTransaction();
 
     CHIP_SELECT_HIGH();
