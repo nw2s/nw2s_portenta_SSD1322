@@ -1,12 +1,7 @@
 #include <SPI.h>
 #include <ssd1322.h>
 
-// The sending timer and interval
-uint32_t sendNow { 0 };
-constexpr uint32_t sendInterval { 2500 };
-
-// An incremental counter for testing SPI communications
-uint8_t counter;
+uint8_t frame_buffer[8192];
 
 void setup()
 {
@@ -14,16 +9,27 @@ void setup()
     while (!Serial);
 
 	delay(5000);
+	
+	SPI.begin();
 
-    counter = 0;
+	Serial.println("Initialize");
+	
+    ssd1322_initialize();
+
+	Serial.println("Clear display RAM");
+    ssd1322_fill_ram(0x00);
+
 }
 
 void loop()
 {
-    // put your main code here, to run repeatedly:
-    if (millis() > sendNow) 
-	{
-        // Wait for the next cycle
-        sendNow = millis() + sendInterval;
-    }
+    ssd1322_fill_fb(frame_buffer, 0xFF);
+    ssd1322_display_fb(frame_buffer);
+
+    delay(500);
+
+    ssd1322_fill_fb(frame_buffer, 0x00);
+    ssd1322_display_fb(frame_buffer);
+	
+	delay(500);
 }
