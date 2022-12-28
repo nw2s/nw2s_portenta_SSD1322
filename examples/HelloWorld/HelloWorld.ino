@@ -7,18 +7,12 @@ char char_counter = 0;
  
 void setup()
 {
-    Serial.begin(115200);
-    // while (!Serial);
-
-	delay(2000);
+	delay(1000);
 	
 	SPI.begin();
 
-	Serial.println("Initialize");
-	
     ssd1322_initialize();
 
-	Serial.println("Clear display RAM");
     ssd1322_fill_ram(0x00);
 	
     ssd1322_fill_fb(frame_buffer, 0x00);
@@ -42,7 +36,7 @@ void loop()
 
 	char_counter = (char_counter + 1) % 102;
 		
-    delay(100);
+    delay(250);
 }
 
 
