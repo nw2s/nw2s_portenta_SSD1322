@@ -12,6 +12,6 @@ Wiring:
 
 The mjority of the low-level code is based on the library located at https://github.com/adomkwabena/SSD1322_OLED_Driver - but with the CMSIS/HAL code removed and replaced with Arduino library routines. 
 
-The font is based on a Fira Code which I discovered using IntelliJ. I have rendered it as a set of glyphs that are 20px x 13px. An unfortunate overall dimension for verious reasons, but the font is just right for the display and is a lot prettier than most of the binary bitmapped fonts that are available in the other OLED drivers. https://github.com/tonsky/FiraCode
+The font is based on a Fira Code which I discovered using IntelliJ. I have rendered it as a set of glyphs that are 20px x 13px. An unfortunate overall dimension for various reasons, but the font is just right for the display and is a lot prettier than most of the binary bitmapped fonts that are available in the other OLED drivers. https://github.com/tonsky/FiraCode
 
 ![Font example](resources/font.png?raw=true "Font Sample")
