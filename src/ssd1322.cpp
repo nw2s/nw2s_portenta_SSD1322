@@ -415,8 +415,7 @@ void ssd1322_initialize(void)
     // Enable internal VDD regulator
     ssd1322_set_function_selection(0x01);
     // Enable external VSL
-    ssd1322_set_display_enhancement_a(ENABLE_EXTERNAL_VSL,
-                                      ENHANCED_LOW_GRAY_SCALE_QUALITY);
+    ssd1322_set_display_enhancement_a(ENABLE_EXTERNAL_VSL, ENHANCED_LOW_GRAY_SCALE_QUALITY);
     // Set segment output current
     ssd1322_set_contrast_current(0x9F);
     // Set scale factor of segment output current control
