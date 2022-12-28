@@ -1,6 +1,6 @@
 #include <stddef.h>
 #include "SPI.h"
-#include "ssd1322.h"
+#include "nw2s_portenta_ssd1322.h"
 
 
 #define DISPLAY_SPI_RESET PC_13
