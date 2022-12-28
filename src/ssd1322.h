@@ -4,7 +4,6 @@
 
 #include <stdint.h>
 
-
 // SSD1322 commands
 #define ENABLE_GRAY_SCALE_TABLE                 0x00
 #define SET_COLUMN_ADDRESS                      0x15
@@ -206,14 +205,6 @@ void ssd1322_initialize(void);
  */
 void ssd1322_set_address(uint8_t x, uint8_t y);
 
-/**
- * @brief   This function allows the selection of a font to be used for all
- *          text drawing functions.
- *
- * @param   font: A pointer to the selected font.
- * @returns None
- */
-void ssd1322_set_font(const font_t * font);
 
 void ssd1322_put_pixel_fb(uint8_t * fb, uint8_t x_virtual, uint8_t y);
 
@@ -227,10 +218,7 @@ void ssd1322_put_pixel_fb(uint8_t * fb, uint8_t x_virtual, uint8_t y);
  *
  * @returns None
  */
-void ssd1322_put_horizontal_line_fb(uint8_t * fb,
-                                    uint8_t x,
-                                    uint8_t y,
-                                    uint8_t length);
+void ssd1322_put_horizontal_line_fb(uint8_t * fb, uint8_t x, uint8_t y, uint8_t length);
 
 /**
  * @brief   This function draws a vertical line into a frame buffer.
@@ -243,11 +231,7 @@ void ssd1322_put_horizontal_line_fb(uint8_t * fb,
  *
  * @returns None
  */
-void ssd1322_put_vertical_line_fb(uint8_t * fb,
-                                  uint8_t x,
-                                  uint8_t y,
-                                  uint8_t height,
-                                  uint8_t align);
+void ssd1322_put_vertical_line_fb(uint8_t * fb, uint8_t x, uint8_t y, uint8_t height, uint8_t align);
 
 /**
  * @brief   This function draws a rectangle using user supplied coordinates.
@@ -260,11 +244,7 @@ void ssd1322_put_vertical_line_fb(uint8_t * fb,
  *
  * @returns None
  */
-void ssd1322_put_rectangle_fb(uint8_t * fb,
-                              uint8_t x_1,
-                              uint8_t y_1,
-                              uint8_t x_2,
-                              uint8_t y_2);
+void ssd1322_put_rectangle_fb(uint8_t * fb, uint8_t x_1, uint8_t y_1, uint8_t x_2, uint8_t y_2);
 
 /**
  * @brief   This function draws a resource (character or bitmap) starting from
@@ -279,12 +259,7 @@ void ssd1322_put_rectangle_fb(uint8_t * fb,
  *
  * @returns The current x coordinate of the frame buffer.
  */
-void ssd1322_put_resource_fb(uint8_t *fb,
-                             uint8_t x_virtual,
-                             uint8_t y,
-                             uint8_t rows,
-                             uint8_t columns,
-                             const uint8_t *resource_ptr);
+void ssd1322_put_resource_fb(uint8_t *fb, uint8_t x_virtual, uint8_t y, uint8_t rows, uint8_t columns, const uint8_t *resource_ptr);
 
 /**
  * @brief   Displays a bitmap on the screen.
@@ -296,39 +271,7 @@ void ssd1322_put_resource_fb(uint8_t *fb,
  *
  * @returns None
  */
-void ssd1322_put_bitmap_fb(uint8_t *fb,
-                           uint8_t x_virtual,
-                           uint8_t y,
-                           const bitmap_t *bmp);
-
-/**
- * @brief   This function draws a character into a frame buffer starting from the
- *          supplied coordinates.
- *
- * @param   fb: A pointer to the frame buffer to draw the character into.
- * @param   x_virtual: The x coordinate to begin drawing the character.
- * @param   y: The y coordinate to begin drawing the character.
- * @param   c: The character to be drawn into the frame buffer.
- *
- * @returns The current x coordinate of the frame buffer.
- */
-uint8_t ssd1322_put_char_fb(uint8_t * fb, uint8_t x_virtual, uint8_t y, const char c);
-
-/**
- * @brief   This function draws a string into a frame buffer starting from
- *          the supplied coordinates.
- *
- * @param   fb: A pointer to the frame buffer to draw the string into.
- * @param   x_virtual: The x coordinate to begin drawing the string.
- * @param   y: The y coordinate to begin drawing the string.
- * @param   string: The string to be displayed.
- *
- * @returns The current x coordinate of the frame buffer.
- */
-uint8_t ssd1322_put_string_fb(uint8_t * fb,
-                              uint8_t x_virtual,
-                              uint8_t y,
-                              const char * string);
+void ssd1322_put_bitmap_fb(uint8_t *fb, uint8_t x_virtual, uint8_t y, const bitmap_t *bmp);
 
 /**
  * @brief   This function fills a frame buffer with the provided data.
@@ -348,4 +291,12 @@ void ssd1322_fill_fb(uint8_t * fb, uint8_t data);
  */
 void ssd1322_display_fb(uint8_t * fb);
 
+
+void draw_char_on_framebuffer(uint8_t *frame_buffer, char character, uint8_t dest_column, uint8_t dest_row);
+
+
 #endif /* INC_SSD1322_H_ */
+
+
+
+
