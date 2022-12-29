@@ -1,5 +1,7 @@
 # nw2s_portenta_SSD1322
 
+[![.github/workflows/library.yaml](https://github.com/nw2s/nw2s_portenta_SSD1322/actions/workflows/library.yaml/badge.svg)](https://github.com/nw2s/nw2s_portenta_SSD1322/actions/workflows/library.yaml)
+
 ![SSD1322 OLED Display](resources/oled.jpg?raw=true "Fira Code demo")
 
 This SSH1322 Driver works with the Arduino Portenta H7.
