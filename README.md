@@ -1,4 +1,4 @@
-# nw2s_portenta_SSD1322
+# nw2s Arduino Portenta SSD1322
 
 [![Badge](https://github.com/nw2s/nw2s_portenta_SSD1322/actions/workflows/ArduinoLint.yaml/badge.svg)](https://github.com/nw2s/nw2s_portenta_SSD1322/actions/workflows/ArduinoLint.yaml)
 
