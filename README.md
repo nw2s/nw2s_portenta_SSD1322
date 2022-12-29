@@ -1,6 +1,6 @@
 # nw2s_portenta_SSD1322
 
-[![.github/workflows/ArduinoLint.yaml](https://github.com/nw2s/nw2s_portenta_SSD1322/actions/workflows/Arduino Lint.yaml/badge.svg)](https://github.com/nw2s/nw2s_portenta_SSD1322/actions/workflows/ArduinoLint.yaml)
+[![Badge](https://github.com/nw2s/nw2s_portenta_SSD1322/actions/workflows/ArduinoLint.yaml/badge.svg)](https://github.com/nw2s/nw2s_portenta_SSD1322/actions/workflows/ArduinoLint.yaml)
 
 ![SSD1322 OLED Display](resources/oled.jpg?raw=true "Fira Code demo")
 
