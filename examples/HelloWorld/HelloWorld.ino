@@ -1,5 +1,5 @@
 #include <SPI.h>
-#include <ssd1322.h>
+#include <nw2s_portenta_ssd1322.h>
 
 uint8_t frame_buffer[8192];
  
