@@ -33,17 +33,30 @@ This code has been tested on both the NHD 2.8" 256x64 display and the more gener
 
 | Display Pin | Description | Portenta Pin | Description |
 |-------------|-------------|--------------|-------------|
-|             |             |              |             |
-|             |             |              |             |
-|             |             |              |             |
+| 01          |             |              |             |
+| 02          |             |              |             |
+| 03          |             |              |             |
 
 ### AliExpress
 
 | Display Pin | Description | Portenta Pin | Description |
 |-------------|-------------|--------------|-------------|
-|             |             |              |             |
-|             |             |              |             |
-|             |             |              |             |
+| 01          | GND         | GND          | GND         |
+| 02          |             |              |             |
+| 03          |             |              |             |
+| 04          |             |              |             |
+| 05          |             |              |             |
+| 06          |             |              |             |
+| 07          |             |              |             |
+| 08          |             |              |             |
+| 09          |             |              |             |
+| 10          |             |              |             |
+| 11          |             |              |             |
+| 12          |             |              |             |
+| 13          |             |              |             |
+| 14          |             |              |             |
+| 15          |             |              |             |
+| 16          |             |              |             |
 
 
 ## Code Samples
@@ -81,7 +94,7 @@ TODO in 0.2.0 - Full pin configuration
 
 ### RTOS Driver
 
-This driver assumes you are running mbed RTOS threads. It sets up a thread and updates the display about 25 times a second. While you may say - "Hey - why don't you only update when necessary?!" - Well, the thing about DSP is that you need predicable load to ensure a guaranteed latency. You should also redude the amount of conditional code as that is harder to optimize. For this reason, we will predictably update the display at a fixed rate. 
+This driver assumes you are running mbed RTOS threads. It sets up a thread and updates the display about 25 times a second. While you may say - "Hey - why don't you only update when necessary?!" - Well, the thing about DSP is that you need predicable load to ensure a guaranteed latency. You should also redude the amount of conditional code as that is harder to optimize. For this reason, we will predictably update the display at a fixed rate. This not only fixes a predictable load, but it also prevents you from updating more than necessary.
 
 Ideally, you would do this on the M4 processor while your M7 is dedidated to something more intensive like audio DSP or CV code. 
 
