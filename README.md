@@ -37,9 +37,27 @@ The inline pin arrangement of the New Haven Display device is far better for pro
 
 | Display Pin | Description | Portenta Pin | Description |
 |-------------|-------------|--------------|-------------|
-| 01          |             |              |             |
-| 02          |             |              |             |
-| 03          |             |              |             |
+| 01          | VSS         | GND          | GND         |
+| 02          | VCC         | 3V3          | 3V3         |
+| 03          | NC          |              |             |
+| 04          | D/C#        | GPIO1 (PC_15) | Data/Command |
+| 05          | VSS         | GND          | GND         |
+| 06          | VSS         | GND          | GND         |
+| 07          | D0/CLK      | SPI_CK       | SPI Clock   |
+| 08          | D1/DIN      | SPI_COPI     | SPI Data Out |
+| 09          | NC          |              |             |
+| 10          | VSS         | GND          | GND         |
+| 11          | VSS         | GND          | GND         |
+| 12          | VSS         | GND          | GND         |
+| 13          | VSS         | GND          | GND         |
+| 14          | VSS         | GND          | GND         |
+| 15          | NC          |              |             |
+| 16          | /RES        | GPIO0 (PC_13) | Reset       |
+| 17          | /CS         | SPI_CS (PI_0) | Chip Select |
+| 18          | NC          |              |             |
+| 19          | BS1         | GND          | GND         |
+| 20          | BS0         | GND          | GND         |
+
 
 ### AliExpress
 
