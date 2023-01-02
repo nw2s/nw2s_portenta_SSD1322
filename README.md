@@ -25,7 +25,7 @@ This code has been tested on both the NHD 2.8" 256x64 display and the more gener
 
 I prefer the models available on Ali simply because the pin placement is more compact and allows you to squeeze the display closer to the top of a eurorack module. The only problem with the AliExpress models is that the interface (serial vs parallel) is hardwired using 0ohm resistors. You will need to adjust the placement of the resistors to allow for SPI (serial) operation. 
 
-The inline pin arrangement of the New Haven Display device is far better for prototyping as it fits perfectly into a breadboard. 
+The inline pin arrangement of the New Haven Display device is far better for prototyping as it fits perfectly into a breadboard. NHD also provides far superior documentation and support. You get what you pay for.
 
 - NHD 2.8 256x64 vendors on Octopart https://octopart.com/nhd-2.8-25664ucb2-newhaven+display-20012480
 - NHD 2.8 256x64 Product Page https://newhavendisplay.com/2-8-inch-blue-graphic-oled-module/
@@ -108,4 +108,5 @@ Ideally, you would do this on the M4 processor while your M7 is dedidated to som
 TODO in 0.3.0
 
 
+![Hello World Animation](resources/helloworld.gif?raw=true "Hello World")
 
