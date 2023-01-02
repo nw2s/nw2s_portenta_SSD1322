@@ -21,7 +21,11 @@ The font is based on a Fira Code which I discovered using IntelliJ. I have rende
 
 ## Hardware
 
-This code has been tested on both the NHD 2.8" 256x64 display and the more generic 3.12" model that seems to be available from many AliExpress vendors. There are others it's likely to work with just as well. I prefer the models available on Ali simply because the pin placement is more compact and allows you to squeeze the display closer to the top of a eurorack module. The only problem with the AliExpress models is that the interface (serial vs parallel) is hardwired using 0ohm resistors. You will need to adjust the placement of the resistors to allow for SPI (serial) operation. 
+This code has been tested on both the NHD 2.8" 256x64 display and the more generic 3.12" model that seems to be available from many AliExpress vendors. There are others it's likely to work with just as well. 
+
+I prefer the models available on Ali simply because the pin placement is more compact and allows you to squeeze the display closer to the top of a eurorack module. The only problem with the AliExpress models is that the interface (serial vs parallel) is hardwired using 0ohm resistors. You will need to adjust the placement of the resistors to allow for SPI (serial) operation. 
+
+The inline pin arrangement of the New Haven Display device is far better for prototyping as it fits perfectly into a breadboard. 
 
 - NHD 2.8 256x64 vendors on Octopart https://octopart.com/nhd-2.8-25664ucb2-newhaven+display-20012480
 - NHD 2.8 256x64 Product Page https://newhavendisplay.com/2-8-inch-blue-graphic-oled-module/
@@ -42,21 +46,21 @@ This code has been tested on both the NHD 2.8" 256x64 display and the more gener
 | Display Pin | Description | Portenta Pin | Description |
 |-------------|-------------|--------------|-------------|
 | 01          | GND         | GND          | GND         |
-| 02          |             |              |             |
-| 03          |             |              |             |
-| 04          |             |              |             |
-| 05          |             |              |             |
-| 06          |             |              |             |
-| 07          |             |              |             |
-| 08          |             |              |             |
-| 09          |             |              |             |
-| 10          |             |              |             |
-| 11          |             |              |             |
-| 12          |             |              |             |
-| 13          |             |              |             |
-| 14          |             |              |             |
-| 15          |             |              |             |
-| 16          |             |              |             |
+| 02          | VCC         | 3V3          | 3V3         |
+| 03          | NC          |              |             |
+| 04          | D0/CLK      |              |             |
+| 05          | D1/DIN      |              |             |
+| 06          | D2          |              |             |
+| 07          | D3          |              |             |
+| 08          | D4          |              |             |
+| 09          | D5          |              |             |
+| 10          | D6          |              |             |
+| 11          | D7          |              |             |
+| 12          | E/RD#       | GND          | Enable      |
+| 13          | R/W#        | GND          | Read/Write  |
+| 14          | D/C#        | GPIO1 (PC_15) | Data/Command |
+| 15          | RES#        | GPIO0 (PC_13) | Reset       |
+| 16          | CS#         | SPI_CS (PI_0) | Chip Select |
 
 
 ## Code Samples
