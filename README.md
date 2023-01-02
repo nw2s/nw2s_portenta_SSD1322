@@ -62,6 +62,9 @@ The inline pin arrangement of the New Haven Display device is far better for pro
 | 15          | RES#        | GPIO0 (PC_13) | Reset       |
 | 16          | CS#         | SPI_CS (PI_0) | Chip Select |
 
+R5 and R8 need to be jumpered for SPI operation:
+
+![R5 and R8 with 0ohm jumpers](resources/jumpers.jpg?raw=true "Jumpers")
 
 ## Code Samples
 
