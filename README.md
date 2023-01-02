@@ -61,20 +61,20 @@ The simple interface is just a straightforward C interface. The frame buffer is 
 
 ```c
 	
-	uint8_t frame_buffer[8192];
+uint8_t frame_buffer[8192];
 
-	SPI.begin();
+SPI.begin();
 
-    ssd1322_initialize();
+ssd1322_initialize();
 
-    ssd1322_fill_ram(0x00);
-	
-    ssd1322_fill_fb(frame_buffer, 0x00);
-    ssd1322_display_fb(frame_buffer);
+ssd1322_fill_ram(0x00);
 
-	draw_char_on_framebuffer(frame_buffer, char_counter + 32, j, i);			
+ssd1322_fill_fb(frame_buffer, 0x00);
+ssd1322_display_fb(frame_buffer);
 
-    ssd1322_display_fb(frame_buffer);
+draw_char_on_framebuffer(frame_buffer, char_counter + 32, j, i);			
+
+ssd1322_display_fb(frame_buffer);
 
 ```
 
