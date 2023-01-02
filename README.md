@@ -23,10 +23,9 @@ The font is based on a Fira Code which I discovered using IntelliJ. I have rende
 
 This code has been tested on both the NHD 2.8" 256x64 display and the more generic 3.12" model that seems to be available from many AliExpress vendors. There are others it's likely to work with just as well. I prefer the models available on Ali simply because the pin placement is more compact and allows you to squeeze the display closer to the top of a eurorack module. The only problem with the AliExpress models is that the interface (serial vs parallel) is hardwired using 0ohm resistors. You will need to adjust the placement of the resistors to allow for SPI (serial) operation. 
 
-NHD 2.8 256x64 vendors on Octopart https://octopart.com/nhd-2.8-25664ucb2-newhaven+display-20012480
-NHD 2.8 256x64 Product Page https://newhavendisplay.com/2-8-inch-blue-graphic-oled-module/
-AliExpress 3.12 256x64 Examples https://www.aliexpress.us/item/3256804444062750.html
-https://www.aliexpress.us/item/3256802981939778.html
+- NHD 2.8 256x64 vendors on Octopart https://octopart.com/nhd-2.8-25664ucb2-newhaven+display-20012480
+- NHD 2.8 256x64 Product Page https://newhavendisplay.com/2-8-inch-blue-graphic-oled-module/
+- AliExpress 3.12 256x64 Examples https://www.aliexpress.us/item/3256804444062750.html https://www.aliexpress.us/item/3256802981939778.html
 
 ## Wiring
 
@@ -51,7 +50,7 @@ https://www.aliexpress.us/item/3256802981939778.html
 
 ### Simple Interface
 
-The simple interface is just a straightforward C interface. The frame buffer is a 128 x 64 byte buffer where each pixel is 4 bits (16 levels of gray scale)
+The simple interface is just a straightforward C interface. The frame buffer is a 128 x 64 byte buffer where each pixel is 4 bits (16 levels of gray scale) - resulting in 256x64 pixels.
 
 1. allocate a frame buffer
 2. start SPI
