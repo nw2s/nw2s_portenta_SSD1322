@@ -48,8 +48,8 @@ The inline pin arrangement of the New Haven Display device is far better for pro
 | 01          | GND         | GND          | GND         |
 | 02          | VCC         | 3V3          | 3V3         |
 | 03          | NC          |              |             |
-| 04          | D0/CLK      |              |             |
-| 05          | D1/DIN      |              |             |
+| 04          | D0/CLK      | SPI_CK       | SPI Clock   |
+| 05          | D1/DIN      | SPI_COPI     | SPI Data Out |
 | 06          | D2          |              |             |
 | 07          | D3          |              |             |
 | 08          | D4          |              |             |
