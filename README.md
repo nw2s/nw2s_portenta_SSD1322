@@ -102,7 +102,7 @@ uint8_t frame_buffer[8192];
 
 SPI.begin();
 
-ssd1322_initialize();
+ssd1322_initialize(PI_0, PC_15, PC_13);
 
 ssd1322_fill_ram(0x00);
 
@@ -119,7 +119,7 @@ TODO in 0.2.0 - Full pin configuration
 
 ### RTOS Driver
 
-This driver assumes you are running mbed RTOS threads. It sets up a thread and updates the display about 25 times a second. While you may say - "Hey - why don't you only update when necessary?!" - Well, the thing about DSP is that you need predicable load to ensure a guaranteed latency. You should also redude the amount of conditional code as that is harder to optimize. For this reason, we will predictably update the display at a fixed rate. This not only fixes a predictable load, but it also prevents you from updating more than necessary.
+This driver assumes you are running mbed RTOS threads. It sets up a thread and updates the display about 25 times a second. While you may say - "Hey - why don't you only update when necessary?!" - Well, the thing about DSP is that you need predicable load to ensure a guaranteed latency. You should also reduce the amount of conditional code as that is harder to optimize. For this reason, we will predictably update the display at a fixed rate. This not only fixes a predictable load, but it also prevents you from updating more than necessary.
 
 Ideally, you would do this on the M4 processor while your M7 is dedidated to something more intensive like audio DSP or CV code. 
 

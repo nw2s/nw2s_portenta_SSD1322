@@ -11,7 +11,7 @@ void setup()
 	
 	SPI.begin();
 
-    ssd1322_initialize();
+    ssd1322_initialize(PI_0, PC_15, PC_13);
 
     ssd1322_fill_ram(0x00);
 	

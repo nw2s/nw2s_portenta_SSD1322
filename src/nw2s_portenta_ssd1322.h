@@ -192,7 +192,7 @@ void ssd1322_fill_ram(uint8_t data);
  * @param   None
  * @returns None
  */
-void ssd1322_initialize(void);
+void ssd1322_initialize(PinName cs, PinName dc, PinName reset);
 
 /**
  * @brief   This function selects the address of the SSD1322 GDDRAM.

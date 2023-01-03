@@ -2,18 +2,52 @@
 #include "SPI.h"
 #include "nw2s_portenta_ssd1322.h"
 
-
-#define DISPLAY_SPI_RESET PC_13
-#define DISPLAY_SPI_CS PI_0
-#define DISPLAY_SPI_DC PC_15
+// #define DISPLAY_SPI_RESET PC_13
+// #define DISPLAY_SPI_CS PI_0
+// #define DISPLAY_SPI_DC PC_15
 
 //TODO: Optimize the pin writes
-#define CHIP_SELECT_HIGH()                      digitalWrite(DISPLAY_SPI_CS, HIGH)
-#define CHIP_SELECT_LOW()                       digitalWrite(DISPLAY_SPI_CS, LOW)
-#define DATA_COMMAND_HIGH()                     digitalWrite(DISPLAY_SPI_DC, HIGH)
-#define DATA_COMMAND_LOW()                      digitalWrite(DISPLAY_SPI_DC, LOW)
-#define CHIP_RESET_HIGH()                       digitalWrite(DISPLAY_SPI_RESET, HIGH)
-#define CHIP_RESET_LOW()                        digitalWrite(DISPLAY_SPI_RESET, LOW)
+// #define CHIP_SELECT_HIGH()                      digitalWrite(DISPLAY_SPI_CS, HIGH)
+// #define CHIP_SELECT_LOW()                       digitalWrite(DISPLAY_SPI_CS, LOW)
+// #define DATA_COMMAND_HIGH()                     digitalWrite(DISPLAY_SPI_DC, HIGH)
+// #define DATA_COMMAND_LOW()                      digitalWrite(DISPLAY_SPI_DC, LOW)
+// #define CHIP_RESET_HIGH()                       digitalWrite(DISPLAY_SPI_RESET, HIGH)
+// #define CHIP_RESET_LOW()                        digitalWrite(DISPLAY_SPI_RESET, LOW)
+
+
+static PinName cs_pin = PI_0;
+static PinName reset_pin = PC_13;
+static PinName dc_pin = PC_15;
+
+static inline void chip_select_high()
+{
+	digitalWrite(cs_pin, HIGH);
+}
+
+static inline void chip_select_low()
+{
+	digitalWrite(cs_pin, LOW);
+}
+
+static inline void data_command_high()
+{
+	digitalWrite(dc_pin, HIGH);
+}
+
+static inline void data_command_low()
+{
+	digitalWrite(dc_pin, LOW);
+}
+
+static inline void chip_reset_high()
+{
+	digitalWrite(reset_pin, HIGH);
+}
+
+static inline void chip_reset_low()
+{
+	digitalWrite(reset_pin, LOW);
+}
 
 
 // ****************************************************************************
@@ -282,13 +316,13 @@ static inline void ssd1322_set_command_lock(uint8_t command_lock)
 static inline void ssd1322_gpio_init(void)
 {
 	// RESET - GPIO0
-	pinMode(DISPLAY_SPI_RESET, OUTPUT);
+	pinMode(reset_pin, OUTPUT);
 
 	// CHIP SELECT - SPI_CS
-	pinMode(DISPLAY_SPI_CS, OUTPUT);
+	pinMode(cs_pin, OUTPUT);
 	
 	// DATA/COMMAND - GPIO1
-	pinMode(DISPLAY_SPI_DC, OUTPUT);
+	pinMode(dc_pin, OUTPUT);
 }
 
 // ****************************************************************************
@@ -297,41 +331,41 @@ static inline void ssd1322_gpio_init(void)
 
 void ssd1322_write_data(uint8_t data)
 {
-    DATA_COMMAND_HIGH();
-    CHIP_SELECT_LOW();
+    data_command_high();
+    chip_select_low();
 
 	SPI.beginTransaction(SPISettings(30000000, MSBFIRST, SPI_MODE3));
 	SPI.transfer(data);
 	SPI.endTransaction();
 
-    CHIP_SELECT_HIGH();
-    DATA_COMMAND_LOW();
+    chip_select_high();
+    data_command_low();
 }
 
 void ssd1322_write_data_buffer(uint8_t * fb, uint32_t buffer_size)
 {
-    DATA_COMMAND_HIGH();
-    CHIP_SELECT_LOW();
+    data_command_high();
+    chip_select_low();
 
 	SPI.beginTransaction(SPISettings(30000000, MSBFIRST, SPI_MODE3));
 	SPI.transfer(fb, BUFFER_SIZE);
 	SPI.endTransaction();
 
-    DATA_COMMAND_HIGH();
-    CHIP_SELECT_HIGH();
+    data_command_high();
+    chip_select_high();
 }
 
 void ssd1322_write_command(uint8_t command)
 {
-    DATA_COMMAND_LOW();
-    CHIP_SELECT_LOW();
+    data_command_low();
+    chip_select_low();
 
 	SPI.beginTransaction(SPISettings(30000000, MSBFIRST, SPI_MODE3));
 	SPI.transfer(command);
 	SPI.endTransaction();
 
-    CHIP_SELECT_HIGH();
-    DATA_COMMAND_HIGH();
+    chip_select_high();
+    data_command_low();
 }
 
 void ssd1322_set_column_address(uint8_t column_start, uint8_t column_end)
@@ -382,15 +416,20 @@ void ssd1322_fill_ram(uint8_t data)
     }
 }
 
-void ssd1322_initialize(void)
+void ssd1322_initialize(PinName cs, PinName dc, PinName reset)
 {
+	// Remember the pins
+	cs_pin = cs;
+	dc_pin = dc;
+	reset_pin = reset;
+	
     // Initialize GPIO & SPI
     ssd1322_gpio_init();
 
     // SSD1322 Power on sequence
-    CHIP_RESET_LOW();
+    chip_reset_low();
     delay(500);
-    CHIP_RESET_HIGH();
+    chip_reset_high();
     delay(1000);
 
     // Initialization sequence
@@ -594,7 +633,6 @@ void ssd1322_display_fb(uint8_t *fb)
     // Send entire frame buffer to ssd1322
     ssd1322_write_data_buffer(fb, BUFFER_SIZE);
 }
-
 
 
 
